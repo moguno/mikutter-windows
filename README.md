@@ -7,12 +7,15 @@ mikutterへの手パッチが不要になったり、サウンドが鳴る様に
 
 # 動作環境
 * Windows 7 Pro (64bit)
+* Windows 8.1 Pro (64bit)
+* Windows 8.1 (32bit)
 * RubyInstaller for Windows Ruby 2.0.0-p451 (32bit)
-* Windows 8.1でも近々検証します。
 
 # ざっくりとしたインストール手順
-1. なんとかしてmikutterをどっかに展開する。（日本語フォルダは御法度です。）
+1. なんとかしてmikutterをどっかに展開する。
+（日本語を含むフォルダだと動きません。）
 2. なんとかしてこのmikutter-windowsを（mikutterを展開したフォルダ）¥plugin¥mikutter-windowsフォルダに展開する。
+（GitHubからzipで落とした場合、フォルダ名がmikutter-windows-masterになってるので注意して下さい。）
 3. RubyInstallerを使ってRubyをインストールする。（オプションは下二つをON）
 4. Ruby コマンドプロンプトを開く。
 5. gem install bundler gtk2
