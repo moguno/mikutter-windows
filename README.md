@@ -3,6 +3,7 @@ mikutter-windows
 
 # これなん？
 mikutterをWindowsで使うためのパッチ達です。
+mikutterへの手パッチが不要になったり、サウンドが鳴る様になったりします。
 
 # 動作環境
 * Windows 7 Pro (64bit)
@@ -20,3 +21,22 @@ mikutterをWindowsで使うためのパッチ達です。
 8. ruby mikuter.rb
 
 はぶふぁん。
+
+# いろいろ
+
+* ポストボックスへのインライン入力を行うためには、Gtkの設定をいじる必要があります。
+
+>（Rubyのインストールパス）¥lib¥ruby¥gems¥2.0.0¥gems¥gtk2-2.1.0-x86-mingw32¥vendor¥local¥lib¥gtk-2.0¥2.10.0¥immodules.cache
+
+の3行目のパスを、
+
+>（Rubyのインストールパス）¥lib¥ruby¥gems¥2.0.0¥gems¥gtk2-2.1.0-x86-mingw32¥vendor¥local¥lib¥gtk-2.0¥2.10.0¥immodules¥im-ime.dll
+
+にすればOKとのことです。
+
+# 参考資料
+
+Windowsでmikutterを動かしてみる
+http://kazblog.hateblo.jp/entry/2014/02/23/054832
+
+超参考になりました。ありがとうございます！
