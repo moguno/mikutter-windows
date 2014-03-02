@@ -10,7 +10,7 @@ mikutterをWindowsで使うためのパッチ達です。
 * Windows 8.1でも近々検証します。
 
 # ざっくりとしたインストール手順
-1. なんとかしてmikutterどっかに展開する。（c:¥ユーザ¥（ユーザ名）¥が楽ですね）
+1. なんとかしてmikutterをどっかに展開する。（c:¥ユーザ¥（ユーザ名）¥mikutterが楽ですね）
 2. なんとかしてこのmikutter-windowsをmikutterを展開したディレクトリのplugin¥mikutter-windowsフォルダに展開する。
 3. RubyInstallerをインストールする。
 4. Ruby コマンドプロンプトを開く。
