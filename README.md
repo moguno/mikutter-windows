@@ -15,7 +15,7 @@ mikutterをWindowsで使うためのパッチ達です。
 3. RubyInstallerをインストールする。
 4. Ruby コマンドプロンプトを開く。
 5. gem install bundler gtk2
-6. cd (mikutterを展開したディレクトリ）
+6. cd (mikutterを展開したフォルダ）
 7. bundle install
 8. ruby mikuter.rb
 
