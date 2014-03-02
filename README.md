@@ -12,8 +12,8 @@ mikutterへの手パッチが不要になったり、サウンドが鳴る様に
 
 # ざっくりとしたインストール手順
 1. なんとかしてmikutterをどっかに展開する。（c:¥ユーザ¥（ユーザ名）¥mikutterが楽ですね）
-2. なんとかしてこのmikutter-windowsをmikutterを展開したディレクトリのplugin¥mikutter-windowsフォルダに展開する。
-3. RubyInstallerをインストールする。
+2. なんとかしてこのmikutter-windowsを（mikutterを展開したフォルダ）¥plugin¥mikutter-windowsフォルダに展開する。
+3. RubyInstallerを使ってRubyをインストールする。（オプションは下二つをON）
 4. Ruby コマンドプロンプトを開く。
 5. gem install bundler gtk2
 6. cd (mikutterを展開したフォルダ）
