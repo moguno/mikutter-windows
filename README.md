@@ -5,8 +5,9 @@ mikutter-windows
 mikutterをWindowsで使うためのパッチ達です。
 
 # 動作環境
-Windows 7 Pro (64bit)
-RubyInstaller for Windows Ruby 2.0.0-p451 (32bit)
+* Windows 7 Pro (64bit)
+* RubyInstaller for Windows Ruby 2.0.0-p451 (32bit)
+* Windows 8.1でも近々検証します。
 
 # ざっくりとしたインストール手順
 1. なんとかしてmikutterどっかに展開する。（c:¥ユーザ¥（ユーザ名）¥が楽ですね）
