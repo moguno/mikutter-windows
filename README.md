@@ -11,7 +11,7 @@ mikutterへの手パッチが不要になったり、サウンドが鳴る様に
 * Windows 8.1でも近々検証します。
 
 # ざっくりとしたインストール手順
-1. なんとかしてmikutterをどっかに展開する。（c:¥ユーザ¥（ユーザ名）¥mikutterが楽ですね）
+1. なんとかしてmikutterをどっかに展開する。（日本語フォルダは御法度です。）
 2. なんとかしてこのmikutter-windowsを（mikutterを展開したフォルダ）¥plugin¥mikutter-windowsフォルダに展開する。
 3. RubyInstallerを使ってRubyをインストールする。（オプションは下二つをON）
 4. Ruby コマンドプロンプトを開く。
@@ -19,6 +19,7 @@ mikutterへの手パッチが不要になったり、サウンドが鳴る様に
 6. cd (mikutterを展開したフォルダ）
 7. bundle install
 8. ruby mikuter.rb
+9. 設定画面の「アクティビティ」を開いて、「Windowsプラグイン」が存在するか確認して下さい。
 
 はぶふぁん。
 
