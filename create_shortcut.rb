@@ -3,14 +3,13 @@ require "rbconfig"
 require "win32ole"
 
 ruby_path = File::join(RbConfig::CONFIG["bindir"], RbConfig::CONFIG["ruby_install_name"]) + "w" + RbConfig::CONFIG["EXEEXT"]
-
-Dir::pwd =~ /^(.+)\/plugin\/mikutter-windows$/
+File::expand_path(__FILE__) =~ /^(.+)\/plugin\/mikutter-windows/
 mikutter_dir = $1
 
 def png2ico(png, ico)
   File.open(ico, "wb") { |ico_fp|
     ico_fp.write([0, 1, 1].pack("s3"))
-    ico_fp.write([0, 0, 0, 0, 1, 3, File.size(png) , 22].pack("c4s2l2"))
+    ico_fp.write([0, 0, 0, 0, 1, 3, File::size(png), 22].pack("c4s2l2"))
 
     File.open(png, "rb") { |png_fp|
       data = png_fp.read()
@@ -29,5 +28,3 @@ shortcut.Arguments = "#{mikutter_dir}/mikutter.rb"
 shortcut.IconLocation = "#{mikutter_dir}/plugin/mikutter-windows/icon.ico"
 shortcut.WorkingDirectory = mikutter_dir
 shortcut.Save
-
-puts RbConfig::CONFIG
