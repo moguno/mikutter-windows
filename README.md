@@ -21,17 +21,6 @@ mikutterへの手パッチが不要になったり、サウンドが鳴る様に
 
 はぶふぁん。
 
-# いろいろ
-
-* ポストボックスへのインライン入力を行うためには、Gtkの設定をいじる必要があります。
-
->（Rubyのインストールパス）¥lib¥ruby¥gems¥2.0.0¥gems¥gtk2-2.1.0-x86-mingw32¥vendor¥local¥lib¥gtk-2.0¥2.10.0¥immodules.cache
-
-の13行目のパスを、
-
->（Rubyのインストールパス）¥lib¥ruby¥gems¥2.0.0¥gems¥gtk2-2.1.0-x86-mingw32¥vendor¥local¥lib¥gtk-2.0¥2.10.0¥immodules¥im-ime.dll
-
-にすればOKとのことです。
 
 # 参考資料
 
