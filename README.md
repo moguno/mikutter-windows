@@ -16,13 +16,8 @@ mikutterへの手パッチが不要になったり、サウンドが鳴る様に
 （日本語を含むフォルダだと動きません。）
 2. なんとかしてこのmikutter-windowsを（mikutterを展開したフォルダ）¥plugin¥mikutter-windowsフォルダに展開する。
 （落とし方によって、フォルダ名がmikutter-windows(-余計な文字列)になってる場合があるので注意して下さい。）
-3. RubyInstallerを使ってRubyをインストールする。（オプションは下二つをON）
-4. Ruby コマンドプロンプトを開く。
-5. gem install bundler gtk2
-6. cd (mikutterを展開したフォルダ）
-7. bundle install
-8. ruby mikuter.rb
-9. 設定画面の「アクティビティ」を開いて、「Windowsプラグイン」が存在するか確認して下さい。
+3. （mikutterを展開したフォルダ）¥plugin¥mikutter-windowsフォルダのsetup.rbをダブルクリックする。
+4. デスクトップにできたmikutterアイコンをダブルクリック！
 
 はぶふぁん。
 
