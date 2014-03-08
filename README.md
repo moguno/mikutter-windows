@@ -12,12 +12,14 @@ mikutterへの手パッチが不要になったり、サウンドが鳴る様に
 * RubyInstaller for Windows Ruby 2.0.0-p451 (32bit)
 
 # ざっくりとしたインストール手順
-1. なんとかしてmikutterをどっかに展開する。
+1. RubyInstallerをインストールする。
+（途中で聞かれる環境変数の設定と.rbへの関連付けは必ずチェックしましょう。）
+2. なんとかしてmikutterをどっかに展開する。
 （日本語を含むフォルダだと動きません。）
-2. なんとかしてこのmikutter-windowsを（mikutterを展開したフォルダ）¥plugin¥mikutter-windowsフォルダに展開する。
+3. なんとかしてこのmikutter-windowsを（mikutterを展開したフォルダ）¥plugin¥mikutter-windowsフォルダに展開する。
 （落とし方によって、フォルダ名がmikutter-windows(-余計な文字列)になってる場合があるので注意して下さい。）
-3. （mikutterを展開したフォルダ）¥plugin¥mikutter-windowsフォルダのsetup.rbをダブルクリックする。
-4. デスクトップにできたmikutterアイコンをダブルクリック！
+4. （mikutterを展開したフォルダ）¥plugin¥mikutter-windowsフォルダのsetup.rbをダブルクリックする。
+5. デスクトップにできたmikutterアイコンをダブルクリック！
 
 はぶふぁん。
 
