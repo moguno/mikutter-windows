@@ -34,7 +34,11 @@ class Hash
   def inspect()
     result = self.inject({}) { |result, (key, item)|
       if item.is_a?(String)
-        result[key] = item.encode(Encoding.default_external)
+        begin
+          result[key] = item.encode(Encoding.default_external)
+        rescue => e
+          result[key] = "(?????)"
+        end
       else
         result[key] = item
       end
