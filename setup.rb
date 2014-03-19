@@ -59,7 +59,7 @@ def create_shortcut!()
   shortcut = wshell.CreateShortcut(File.join(wshell.SpecialFolders("Desktop"), "mikutter.lnk"))
 
   shortcut.TargetPath = $ruby_path
-  shortcut.Arguments = "#{$mikutter_dir}/mikutter.rb"
+  shortcut.Arguments = "\"#{$mikutter_dir}/mikutter.rb\""
   shortcut.IconLocation = "#{$mikutter_dir}/plugin/mikutter-windows/icon.ico"
   shortcut.WorkingDirectory = $mikutter_dir
   shortcut.Save
