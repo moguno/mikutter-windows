@@ -113,7 +113,6 @@ Plugin.create(:windows) do
     [
       "フォントはArial Unicode MSを使うと文字化けが少ないです",
       "設定の「通知」でmikutter/core/skin/data/sounds/のwavファイルを指定すると、mikutterがかわいくしゃべり始めます",
-      Gem::Specification.find_by_path("gtk2").full_gem_path + '/vendor/local/lib/gtk-2.0/2.10.0/immodules/immodules.cacheを書き換えてインライン入力を実現しよう',
       "このお助けメッセージを非表示にするには、設定の「アクティビティ」で「Windowsプラグイン」のタイムライン表示をOFFにしよう。",
     ].each { |msg|
 
