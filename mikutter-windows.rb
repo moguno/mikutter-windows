@@ -156,6 +156,6 @@ Plugin.create(:windows) do
   # サウンドを鳴らします
   defsound :win32, "Windows" do |filename|
     playsound = Win32API.new('winmm', 'PlaySound', 'ppl', 'i')
-    playsound.call(filename, nil, 0)
+    playsound.call(filename.encode(Encoding.default_external), nil, 0)
   end
 end
