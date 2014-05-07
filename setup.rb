@@ -52,17 +52,19 @@ def png2ico(png, ico)
 end
 
 
-def create_bat!()
+def create_bat(bat)
   bat_content = "#{$ruby_path} \"#{$mikutter_dir}/mikutter.rb\""
-  File.open("run_mikutter.bat", "w") { |bat_fp|
+  puts bat_content
+  File.open(bat, "w") { |bat_fp|
     bat_fp.write(bat_content)
   }
 end
 
 
-def create_vbs!()
+def create_vbs(vbs)
   vbs_content = "CreateObject(\"WScript.Shell\").Run \"#{$mikutter_dir}/plugin/mikutter-windows/run_mikutter.bat\",0"
-  File.open("run_mikutter.vbs", "w") { |vbs_fp|
+  puts vbs_content
+  File.open(vbs, "w") { |vbs_fp|
     vbs_fp.write(vbs_content)
   }
 end
@@ -70,8 +72,8 @@ end
 def create_shortcut!()
   png2ico(File::join($mikutter_dir, "core", "skin", "data", "icon.png"), File::join($mikutter_dir, "plugin", "mikutter-windows", "icon.ico"))
 
-  create_bat!
-  create_vbs!
+  create_bat(File::join($mikutter_dir, "plugin", "mikutter-windows", "run_mikutter.bat"))
+  create_vbs(File::join($mikutter_dir, "plugin", "mikutter-windows", "run_mikutter.vbs"))
 
   wshell = WIN32OLE.new("WScript.Shell")
   shortcut = wshell.CreateShortcut(File.join(wshell.SpecialFolders("Desktop"), "mikutter.lnk"))
