@@ -4,7 +4,7 @@ require "win32ole"
 require "find"
 require "fileutils"
 
-$ruby_path = File::join(RbConfig::CONFIG["bindir"], RbConfig::CONFIG["ruby_install_name"]) + "w" + RbConfig::CONFIG["EXEEXT"]
+$ruby_path = File::join(RbConfig::CONFIG["bindir"], RbConfig::CONFIG["ruby_install_name"]) + RbConfig::CONFIG["EXEEXT"]
 
 File::expand_path(__FILE__) =~ /^(.+)\/plugin\/mikutter-windows/
 $mikutter_dir = $1
@@ -28,7 +28,7 @@ def modify_immodules_cache!()
       File.open(file, "w") { |fpw|
         fpr.each { |line|
           if line =~ /\/im-ime.dll\"/
-            fpw.puts("\"#{imime_path}\"") 
+            fpw.puts("\"#{imime_path}\"")
           else
             fpw.puts(line)
           end
@@ -52,15 +52,25 @@ def png2ico(png, ico)
 end
 
 
+def create_vbs(vbs)
+  vbs_content = %!CreateObject("WScript.Shell").Run "cmd /C #{$ruby_path} ""#{$mikutter_dir}/mikutter.rb""", 0!
+  File.open(vbs, "w") { |vbs_fp|
+    vbs_fp.write(vbs_content)
+  }
+end
+
+
 def create_shortcut!()
   png2ico(File::join($mikutter_dir, "core", "skin", "data", "icon.png"), File::join($mikutter_dir, "plugin", "mikutter-windows", "icon.ico"))
+
+  create_vbs(File::join($mikutter_dir, "plugin", "mikutter-windows", "run_mikutter.vbs"))
 
   wshell = WIN32OLE.new("WScript.Shell")
   shortcut = wshell.CreateShortcut(File.join(wshell.SpecialFolders("Desktop"), "mikutter.lnk"))
 
-  shortcut.TargetPath = $ruby_path
-  shortcut.Arguments = "\"#{$mikutter_dir}/mikutter.rb\""
-  shortcut.IconLocation = "#{$mikutter_dir}/plugin/mikutter-windows/icon.ico"
+  shortcut.TargetPath = File.join($mikutter_dir, "plugin", "mikutter-windows", "run_mikutter.vbs")
+  shortcut.Arguments = ""
+  shortcut.IconLocation = File.join($mikutter_dir, "plugin", "mikutter-windows", "icon.ico")
   shortcut.WorkingDirectory = $mikutter_dir
   shortcut.Save
 end
