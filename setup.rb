@@ -28,7 +28,7 @@ def modify_immodules_cache!()
       File.open(file, "w") { |fpw|
         fpr.each { |line|
           if line =~ /\/im-ime.dll\"/
-            fpw.puts("\"#{imime_path}\"")
+            fpw.puts("\"#{imime_path}\"") 
           else
             fpw.puts(line)
           end
@@ -52,27 +52,17 @@ def png2ico(png, ico)
 end
 
 
-def create_bat(bat)
-  bat_content = "#{$ruby_path} \"#{$mikutter_dir}/mikutter.rb\""
-  puts bat_content
-  File.open(bat, "w") { |bat_fp|
-    bat_fp.write(bat_content)
-  }
-end
-
-
 def create_vbs(vbs)
-  vbs_content = "CreateObject(\"WScript.Shell\").Run \"#{$mikutter_dir}/plugin/mikutter-windows/run_mikutter.bat\",0"
-  puts vbs_content
+  vbs_content = %!CreateObject("WScript.Shell").Run "cmd /C #{$ruby_path} ""#{$mikutter_dir}/mikutter.rb""", 0!
   File.open(vbs, "w") { |vbs_fp|
     vbs_fp.write(vbs_content)
   }
 end
 
+
 def create_shortcut!()
   png2ico(File::join($mikutter_dir, "core", "skin", "data", "icon.png"), File::join($mikutter_dir, "plugin", "mikutter-windows", "icon.ico"))
 
-  create_bat(File::join($mikutter_dir, "plugin", "mikutter-windows", "run_mikutter.bat"))
   create_vbs(File::join($mikutter_dir, "plugin", "mikutter-windows", "run_mikutter.vbs"))
 
   wshell = WIN32OLE.new("WScript.Shell")
