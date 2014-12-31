@@ -77,6 +77,7 @@ end
 
 
 def bundle!()
+  system("gem update --system")
   system("gem install bundler")
 
   Dir.chdir($mikutter_dir)
