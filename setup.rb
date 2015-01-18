@@ -75,20 +75,8 @@ def create_shortcut!()
   shortcut.Save
 end
 
-def temporary_disable_ssl_source!()
-  system("gem source -r https://rubugems.org")
-  system("gem source -a http://rubygems.org")
-end
-
-def reenable_ssl_source!()
-  system("gem source -r http://rubugems.org")
-  system("gem source -a https://rubygems.org")
-end
-
 def bundle!()
-  temporary_disable_ssl_source!
-  system("gem update --system")
-  reenable_ssl_source!
+  system("gem update --system --clear-sources --source http://rubygems.org")
   system("gem install bundler")
 
   Dir.chdir($mikutter_dir)
