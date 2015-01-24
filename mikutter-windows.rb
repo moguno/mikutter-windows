@@ -27,6 +27,23 @@ def object_get_contents(fn)
 end
 
 
+# プロフィールタブのフォロワー・フォロイーウインドウの中身が「error」になる件の修正
+# monetaのFileAdapterでデータベース（バイナリ）をFile::read()で読んでるけど、その関数テキストファイル用なのよ。
+# いやお前らマジでテキストモードとバイナリモード区別しろやコラ。
+module Moneta
+  module Adapters
+    class File
+      def load(key, options = {})
+        ::File.open(store_path(key), "rb") { |fp|
+          fp.read
+        }
+      rescue Errno::ENOENT
+      end
+    end
+  end
+end
+
+
 # encode()のオプションを生成する
 def add_encode_options(options)
   options[:invalid] = :replace
@@ -131,7 +148,6 @@ class Plugin::Settings
     about_org(label, options)
   end
 end
-
 
 # 画像プレビューウインドウに画像が表示できない問題のひっくす
 Plugin[:openimg].instance_eval {
