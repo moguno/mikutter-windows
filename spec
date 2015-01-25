@@ -4,7 +4,7 @@ depends:
   mikutter: 0.2.2.1537
   plugin:
   - gtk
-version: '0.4.3'
+version: '0.4.4'
 author: moguno
 name: mikutter-windows
 description: Windowsでmikutterするための諸々をあなたへ。
