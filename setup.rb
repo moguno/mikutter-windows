@@ -3,12 +3,16 @@ require "rbconfig"
 require "win32ole"
 require "find"
 require "fileutils"
-
-$ruby_path = File::join(RbConfig::CONFIG["bindir"], RbConfig::CONFIG["ruby_install_name"]) + RbConfig::CONFIG["EXEEXT"]
+require "rbconfig"
 
 File::expand_path(__FILE__) =~ /^(.+)\/plugin\/mikutter-windows/
 $mikutter_dir = $1
 
+def exec_rb(rb_file)
+  ruby = File.join(RbConfig::CONFIG['bindir'], RbConfig::CONFIG['ruby_install_name'])
+
+  system("#{ruby} #{rb_file}")
+end
 
 def modify_immodules_cache!()
   Find::find(Gem.default_dir).select { |a| a =~ /\/immodules.cache$/ }.each { |file|
@@ -75,17 +79,51 @@ def create_shortcut!()
   shortcut.Save
 end
 
-def bundle!()
+def update_gem_system!()
   system("gem update --system --clear-sources --source http://rubygems.org")
-  system("gem install bundler")
+end
 
+def install_gem!(gem_name)
+  system("gem install #{gem_name}")
+end
+
+def bundle!()
+  current_dir = Dir.pwd
   Dir.chdir($mikutter_dir)
   system("bundle install")
+  Dir.chdir(current_dir)
+end
+
+def puts_decorated(msg)
+  line = "|　#{msg}　|"
+  width = line.each_char.map{ |c| c.ascii_only? ? 1 : 2 }.inject(:+)
+
+  puts "-" * width
+  puts line
+  puts "-" * width
 end
 
 
-bundle!
+if __FILE__ == $0
+  puts_decorated "mikutter-windowsにようこそ！"
+  puts "Windowsでmikutterを動かすために色々準備をしていくよ。"
+  puts "●SSLエラー回避のために、gemをバージョンアップするよ。"
+  update_gem_system!
 
-modify_immodules_cache!
+  puts "●mikutterに必要なgemをインストールするよ。"
+  install_gem!("bundler")
+  bundle!
 
-create_shortcut!
+  puts "●日本語入力できるようにするよ。"
+  modify_immodules_cache!
+
+  puts "●デスクトップにショートカットを作るよ。"
+  create_shortcut!
+
+  puts "●便利なプラグインをインストールしちゃうよ。"
+  puts "（この後表示されるwarningは問題ありません）"
+  install_gem!("minitar")
+  exec_rb("install_cool_plugins.rb")
+
+  puts_decorated "インストール完了！"
+end
