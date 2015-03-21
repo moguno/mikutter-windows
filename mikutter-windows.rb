@@ -2,48 +2,37 @@
 
 require 'rubygems'
 require 'Win32API'
+require File.join(File.absolute_path(File.dirname(__FILE__)), "common.rb")
 
-def patches
-  Dir.glob(File.expand_path("*",File.dirname(__FILE__))).select { |file|
-    puts file
-    file =~ /\/[0-9]{3}_.+\.rb$/
-  }
-end
+# パッチをロードする
+apply_patches("")
 
-def apply_patches
-  patches.each { |patch|
-    require patch
-  }
-end
 
-apply_patches
-
+# プラグイン本体
 Plugin.create(:mikutter_windows) {
   on_boot { |service|
 
     defactivity("windows", "Windowsプラグイン")
 
+    activity(:windows, "mikutter on Windowsのバグ報告はhttps://github.com/moguno/mikutter-windows/issuesまでお願いします")
+
     if !UserConfig[:windows_initialized_001]
       UserConfig[:activity_show_timeline] = UserConfig[:activity_show_timeline] + ["windows"]
       UserConfig[:sound_server] = :win32
 
+      UserConfig[:mumble_basic_font] = "Meiryo 10"
+      UserConfig[:mumble_reply_font] = "Meiryo 8"
+      UserConfig[:mumble_basic_left_font] = "Meiryo 10"
+      UserConfig[:mumble_basic_right_font] = "Meiryo 10"
+
+      mikutter_directory = File.expand_path(File.join(File.dirname(__FILE__), '..\\..'))
+      UserConfig[:notify_sound_retweeted] = File.join(mikutter_directory, "\\core\\skin\\data\\sounds\\retweeted.wav").gsub(/\//, "\\")
+      UserConfig[:notify_sound_favorited] = File.join(mikutter_directory, "\\core\\skin\\data\\sounds\\favo.wav").gsub(/\//, "\\")
+
+      Plugin.call(:play_sound, File.join(mikutter_directory, "\\core\\skin\\data\\sounds\\mikutter.wav").gsub(/\//, "\\"))
+
       UserConfig[:windows_initialized_001] = true
     end
-
-    delay = 10
-
-    [
-      "フォントはArial Unicode MSを使うと文字化けが少ないです",
-      "設定の「通知」でmikutter/core/skin/data/sounds/のwavファイルを指定すると、mikutterがかわいくしゃべり始めます",
-      "このお助けメッセージを非表示にするには、設定の「アクティビティ」で「Windowsプラグイン」のタイムライン表示をOFFにしよう。",
-    ].each { |msg|
-
-      Reserver.new(delay) {
-        activity(:windows, msg)
-      }
-
-      delay += 10
-    }
   }
 
   # サウンドを鳴らします
