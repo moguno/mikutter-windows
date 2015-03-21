@@ -6,7 +6,9 @@ require "win32ole"
 require "find"
 require "fileutils"
 require "rbconfig"
+
 require File.join(File.absolute_path(File.dirname(__FILE__).encode("UTF-8")), "common.rb")
+require File.join(File.absolute_path(File.dirname(__FILE__).encode("UTF-8")), "monky_patch_file_encoding_fix.rb")
 
 
 # Rubyスクリプトを実行する
@@ -102,9 +104,14 @@ end
 
 # bundleを実行する
 def bundle!()
+  require "bundler"
+  require "bundler/installer"
+
   current_dir = Dir.pwd
   Dir.chdir(mikutter_dir)
-  system("bundle install")
+
+  Bundler::Installer.install(Bundler.root, Bundler.definition, {})
+
   Dir.chdir(current_dir)
 end
 
