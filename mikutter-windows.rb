@@ -29,6 +29,8 @@ Plugin.create(:mikutter_windows) {
       UserConfig[:notify_sound_retweeted] = File.join(mikutter_directory, "\\core\\skin\\data\\sounds\\retweeted.wav").gsub(/\//, "\\")
       UserConfig[:notify_sound_favorited] = File.join(mikutter_directory, "\\core\\skin\\data\\sounds\\favo.wav").gsub(/\//, "\\")
 
+      Plugin.call(:play_sound, File.join(mikutter_directory, "\\core\\skin\\data\\sounds\\mikutter.wav").gsub(/\//, "\\"))
+
       UserConfig[:windows_initialized_001] = true
     end
   }
