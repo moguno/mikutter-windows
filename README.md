@@ -5,11 +5,15 @@ mikutter-windows
 mikutterをWindowsで使うためのパッチ達です。
 mikutterへの手パッチが不要になったり、サウンドが鳴る様になったりします。
 
+加えて、他のTwitterクライアントとの機能差を埋めるため、いくつかのプラグインをプリインストールします。
+
+そう、mikutter on Windowsはすでに実用段階に入っているのです。
+
 # 動作環境
 * Windows 7 Pro (64bit)
 * Windows 8.1 Pro (64bit)
 * Windows 8.1 (32bit)
-* RubyInstaller for Windows Ruby 2.0.0-p451 (32bit)
+* RubyInstaller for Windows Ruby 2.1.5 (32bit)
 
 # ざっくりとしたインストール手順
 1. RubyInstallerをインストールする。
