@@ -66,7 +66,7 @@ end
 
 # 起動時に余計なDOS窓が出ないようにするWSHを生成する
 def create_vbs(vbs)
-  vbs_content = %!CreateObject("WScript.Shell").Run "cmd /C #{$ruby_path} ""#{mikutter_dir.encode("Windows-31J")}/plugin/mikutter-windows/boot_mikutter_on_windows.rb""", 0!
+  vbs_content = %!CreateObject("WScript.Shell").Run "cmd /C #{$ruby_path} ""#{mikutter_dir.encode(Encoding.default_external)}/plugin/mikutter-windows/boot_mikutter_on_windows.rb""", 0!
   File.open(vbs, "w") { |vbs_fp|
     vbs_fp.write(vbs_content)
   }

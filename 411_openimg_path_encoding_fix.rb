@@ -8,7 +8,7 @@ module Cairo
       alias :from_png_org :from_png
 
       def from_png(filename)
-        from_png_org(filename.encode("Windows-31J"))
+        from_png_org(filename.encode(Encoding.default_external))
       end
     end
   end
