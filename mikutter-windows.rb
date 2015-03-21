@@ -2,22 +2,13 @@
 
 require 'rubygems'
 require 'Win32API'
+require File.join(File.absolute_path(File.dirname(__FILE__)), "common.rb")
 
-def patches
-  Dir.glob(File.expand_path("*",File.dirname(__FILE__))).select { |file|
-    puts file
-    file =~ /\/[0-9]{3}_.+\.rb$/
-  }
-end
+# パッチをロードする
+apply_patches("")
 
-def apply_patches
-  patches.each { |patch|
-    require patch
-  }
-end
 
-apply_patches
-
+# プラグイン本体
 Plugin.create(:mikutter_windows) {
   on_boot { |service|
 
