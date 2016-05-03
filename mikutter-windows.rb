@@ -25,11 +25,10 @@ Plugin.create(:mikutter_windows) {
       UserConfig[:mumble_basic_left_font] = "Meiryo 10"
       UserConfig[:mumble_basic_right_font] = "Meiryo 10"
 
-      mikutter_directory = File.expand_path(File.join(File.dirname(__FILE__), '..\\..'))
-      UserConfig[:notify_sound_retweeted] = File.join(mikutter_directory, "\\core\\skin\\data\\sounds\\retweeted.wav").gsub(/\//, "\\")
-      UserConfig[:notify_sound_favorited] = File.join(mikutter_directory, "\\core\\skin\\data\\sounds\\favo.wav").gsub(/\//, "\\")
+      UserConfig[:notify_sound_retweeted] = "{MIKUTTER_DIR}/core/skin/data/sounds/retweeted.wav"
+      UserConfig[:notify_sound_favorited] = "{MIKUTTER_DIR}/core/skin/data/sounds/favo.wav"
 
-      Plugin.call(:play_sound, File.join(mikutter_directory, "\\core\\skin\\data\\sounds\\mikutter.wav").gsub(/\//, "\\"))
+      Plugin.call(:play_sound, "{MIKUTTER_DIR}/core/skin/data/sounds/mikutter.wav")
 
       UserConfig[:windows_initialized_001] = true
     end

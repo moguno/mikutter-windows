@@ -23,6 +23,7 @@ def install_cool_plugins!
     FileUtils.mkdir_p(Packaged::Local::PLUGIN_DIR)
   end
 
+  install_plugin!("moguno", "mikutter-portable-path")
   install_plugin!("moguno", "mikutter-large-pic-twitter-com")
   install_plugin!("moguno", "mikutter-mac-de-emoji")
   install_plugin!("moguno", "mikutter-tab-hardpoint")
