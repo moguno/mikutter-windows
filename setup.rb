@@ -97,8 +97,17 @@ end
 
 
 # gemをインストールする
-def install_gem!(gem_name)
-  system("gem install #{gem_name}")
+def install_gem!(gem_name, version = nil)
+
+  command = "gem install #{gem_name} "
+
+  command += if version
+    "-v #{version}"
+  else
+    ""
+  end
+
+  system(command)
 end
 
 
@@ -154,7 +163,7 @@ if __FILE__ == $0
   puts "●便利なプラグインをインストールしちゃうよ。"
   puts "（この後表示されるwarningは問題ありません）"
   install_gem!("minitar")
-  exec_rb("install_cool_plugins.rb")
+  exec_rb(File.join(File.dirname(__FILE__), "install_cool_plugins.rb"))
   puts ""
 
   puts_decorated "インストール完了！mikutter on Windowsを楽しんでね！"
