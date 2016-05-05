@@ -1,7 +1,7 @@
 ---
 slug: :mikutter-windows
 depends:
-  mikutter: 3.2
+  mikutter: "3.2"
   plugin:
   - gtk
 version: '0.8.0'
