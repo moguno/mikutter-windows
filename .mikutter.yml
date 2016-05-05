@@ -1,10 +1,10 @@
 ---
 slug: :mikutter-windows
 depends:
-  mikutter: 0.2.2.1537
+  mikutter: 3.2
   plugin:
   - gtk
-version: '0.7.0'
+version: '0.8.0'
 author: moguno
 name: mikutter-windows
 description: Windowsでmikutterするための諸々をあなたへ。
