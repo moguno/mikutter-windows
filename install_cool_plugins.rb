@@ -29,10 +29,7 @@ def install_cool_plugins!
   install_plugin!("moguno", "mikutter-tab-hardpoint")
   install_plugin!("moguno", "mikutter-tall-replyviewer")
   install_plugin!("moguno", "mikutter-uwm-hommage")
-  install_plugin!("moguno", "mikutter-subparts-image", "sub_parts_image") { |extracted_dir, plugin_dir|
-    FileUtils.mv(File.join(extracted_dir, "for_3.2", "sub_parts_image"), plugin_dir)
-    FileUtils.rm_rf(extracted_dir)
-  }
+  install_plugin!("moguno", "mikutter-subparts-image")
 end
 
 
